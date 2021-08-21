@@ -56,17 +56,17 @@ Consider the binary tree shown in figure 1.
 
 Depending on the traversal order used we will visit the nodes in the alphabetical order depicted, from A, B, C, D to E as shown in the below diagrams. In all cases we are still dereferencing the same chain of links in the same way, but the difference between them is where the current node is visited, whether it is visited before descending the left side of the node (pre-order), between descending the left and right side (in-order), or after descending both the left and right sides (post-order).
 
-<p align="center"><img alt="Binary-Tree In-Order Tarversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu" /></p>
+<p align="center"><img alt="Binary Tree In-Order Tarversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu" /></p>
 
 #### Figure 2. In-order traversal of a binary tree
 -----
 
-<p align="center"><img alt="Binary-Tree Pre-Order Traversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu" /></p>
+<p align="center"><img alt="Binary Tree Pre-Order Traversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu" /></p>
 
 #### Figure 3. Pre-order traversal of a binary tree
 -----
 
-<p align="center"><img alt="Binary-Tree Post-Order Traversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu" /></p>
+<p align="center"><img alt="Binary Tree Post-Order Traversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu" /></p>
 
 #### Figure 4. Post-order traversal of a binary tree
 -----
@@ -76,6 +76,8 @@ For non-binary trees where each node can have an arbitary number of children, th
 ### Hash tables
 
 Typical hash table implementations consist of a set of buckets with each bucket containing a singly linked list of nodes. A full traversal by iterating each bucket (in forward or backward order) and then for each bucket iterating the linked list of nodes is possible. If full reverse order was required, conceivably the hash table's buckets could contain doubly linked lists or xor linked lists.
+
+Another form of hash table implementation is called open addressing and avoids using linked lists and attempts to only use the buckets to directly store all entries. If the number of buckets is not well chosen, either all the buckets fill up and extra time is spent probing and the table needs to be dynamically resized, or the other problem is the table is too large and the memory is sparsed populated with the data, reducing optimal cache use and wasting memory. On the positive side, it can avoid needing to make memory allocations for the nodes as they are added directly in to the buckets, and there is no dereferencing when doing a lookup, the data is directly in the bucket.
 
 
 ## Searching
@@ -171,12 +173,8 @@ We combine this together with our better intrusive tree node, and we have a tabl
 #### Figure 9. Pool tree node
 -----
 
-<style>.markdown-body table { width: 200px }</style>
-
-
 So we can imagine these nodes inside of an array or table. Here is how to think about it:
 
-<center>
 
 | Node  | firstChild | nextSibling | Data    |
 | ----: | ---------: | ----------: | :------ |
@@ -186,11 +184,11 @@ So we can imagine these nodes inside of an array or table. Here is how to think 
 | D     | -1         | -1          |         |
 | E     | -1         | -1          |         |
 
-</center>
+#### Table 1. Tree as a table
+-----
 
 The references should be indexes in to the array. Lets change those.
 
-<center>
 
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
@@ -200,14 +198,13 @@ The references should be indexes in to the array. Lets change those.
 |     3  | D     | -1         | -1          |         |
 |     4  | E     | -1         | -1          |         |
 
-</center>
+#### Table 2. Tree table with illustrative indexes
+-----
 
 The index column doesn't need to explicitly exist but can be inferred by the position in the array, but it should help follow where the firstChild and nextSibling point to.
 
 It hopefully should be obvious that we can rearrange the rows of the table without changing the implied tree and tree order provided we correspondingly update the indexes based on any rearrangements we make. For example if we swap rows 2 and 3 and fix up the indexes like follows:
 
-
-<p align="center">
 
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
@@ -217,12 +214,11 @@ It hopefully should be obvious that we can rearrange the rows of the table witho
 |     3  | C     | -1         |  2          |         |
 |     4  | E     | -1         | -1          |         |
 
-</p>
-
+#### Table 3. Tree table with swapped entries
+-----
 
 This still represents the same tree. So if we removed a node from the tree, we could do this by simply blanking out the row of the table and adjusting the indexes that refered to it. For example if we were to delete node D from the above table / tree.
 
-<p align="center">
 
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
@@ -232,13 +228,13 @@ This still represents the same tree. So if we removed a node from the tree, we c
 |     3  | C     | -1         | -1          |         |
 |     4  | E     | -1         | -1          |         |
 
-</p>
+#### Table 4. Tree table with removed entry
+-----
 
 All the same tree like operations are possible, it's just a slightly different way of thinking about it. But what this does allow is when full traversal is needed it can be done in a more efficient manner.
 
 We could add another column that marks if the node has been deleted and is in the free list and chain these blanked rows so they can be allocated from.
 
-<center>
 
 nextFree = 2
 
@@ -251,7 +247,9 @@ nextFree = 2
 |     4  |     -1   | E     | -1         | -1          |         |
 |     5  |      6   | -1    | -1         | -1          |         |
 
-</center>
+#### Table 5. Tree table with free list
+-----
+
 
 ## Potential use cases
 
@@ -270,13 +268,20 @@ Lets just quickly look at a few other practical examples where tree structures a
 
 ## Hash tables and hashes
 
-String keys. Hashing...
+Hash tables are sometimes also called dictionaries, particularly if the key is a string. They can be thought of as a set of KVPs or key-value pairs. The general idea is pretty simple. If you want to look up the definition of a word, you search a dictionary for the word, and associated with the word is the definition right next to it. Imagine the dictionary was arranged in to chapters, and each chapter was for each letter and contained only words that started with that letter. These chapters would be our buckets in the hash table, and finding what the first letter of our word we are searching for to find the appropriate chapter is our rather simple hash algorithm.
 
-HashMapItem
-Hash
-Key
-Value
+We can use more complicated hashing algorithms and larger numbers of buckets to make the collection of words to search smaller to make it more efficient, but the idea is still the same. Usually a prime number of buckets is chosen for various reasons, particularly when using open addressing, this depends on the probing algorithm.
 
+Whether using open addressing or using a linked list, the data stored is the same and it needs to be compared with what we are searching for to check if it matches or not or we need to continue probing or jump to the next item in the list.
+
+If our key is a string, we can apply a hash to the string to condense it down to a single number. We can then use the modulus of this number with the number of buckets to give us our first bucket to start from. Hashes can have collisions, particular after we've taken the modulus of it with another smaller number, such as N for when we have N buckets. There is a one in N chance of getting a collision. If N is 100 and we've already added 90 items to our hash table, the chance of a collision is very high. A collision represents two different items appearing to be similar or the same item. We therefore need to check. We have to do a more complete comparison to see if the items are infact identical or we have a hash collision.
+
+In the case of strings, if our input strings have common prefixes, then when we do our complete comparison, we may have to iterate the strings and compare quite a number of characters to determine if they are the same or different. This has to be done as a last resort, but to avoid this, if a larger hash was stored with the item, like our hash value before we took the modulus of it, we could compare against it before needing to resort to a full string comparison. So our hash map item might look something like figure 10 below.
+
+<p align="center"><img alt="Hash Map Item" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/hash-map-item.pu" /></p>
+
+#### Figure 10. Hash map item
+-----
 
 ## SoA vs AoS
 
