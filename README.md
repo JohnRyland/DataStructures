@@ -99,5 +99,12 @@ So far this discussion of data structures has been mostly theoretical. But what 
 The first I want to talk about is intrusive vs non-intrusive implementations. An intrusive list is one where the items contained in the list themselves have the next pointers.
 
 
+![Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-list.pu)<br>
+#### Figure 5. Intrusive List
+-----
+
+![Non-Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/non-intrusive-list.pu)<br>
+#### Figure 6. Non-Intrusive List
+-----
 
 
