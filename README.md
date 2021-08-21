@@ -41,17 +41,10 @@ A doubly linked list can be traversed in either direction as there are two sets 
 
 A binary tree has three types of traversal. An in-order traversal, a pre-order traversal and a post-order traversal.
 
-Test if github supports plantuml:
+![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)
 
-![diagram test](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuN9KqBLJSE9o0b7EN0wfUIaWKG00)
+![Binary-Tree Pre-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu)
 
-![Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/tree.pu)
-
-<!--
-@startuml
-A -> B
-B -> C
-@enduml
--->
+![Binary-Tree Post-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu)
 
 
