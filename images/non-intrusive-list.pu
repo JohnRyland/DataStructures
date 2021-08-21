@@ -1,0 +1,34 @@
+@startuml
+!theme cerulean-outline
+object ListNode1 {
+  item
+  next
+}
+object ListNode2 {
+  item
+  next
+}
+object ListNode3 {
+  item
+  next
+}
+object Item1 {
+  value
+}
+object Item2 {
+  value
+}
+object Item3 {
+  value
+}
+object NULL
+
+ListNode1::item -r-> Item1
+ListNode1::next -d-> ListNode2
+
+ListNode2::item -r-> Item2
+ListNode2::next -d-> ListNode3
+
+ListNode3::item -r-> Item3
+ListNode3::next -d-> NULL
+@enduml
