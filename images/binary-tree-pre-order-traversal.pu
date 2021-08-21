@@ -6,17 +6,17 @@ skinparam ArrowColor DeepSkyBlue
 skinparam rectangleBackgroundColor DeepSkyBlue
 skinparam rectangleBorderColor DeepSkyBlue
 
-rectangle Window
-rectangle HBox
-rectangle VBox
-rectangle Child1
-rectangle Child2
-rectangle Child3
+rectangle A
+rectangle B
+rectangle C
+rectangle D
+rectangle E
+rectangle F
 
-Window -d-> HBox
-HBox -d-> VBox
-HBox -d-> Child3
-VBox -d-> Child1
-VBox -d-> Child2
+A -d-> B
+B -d-> C
+B -d-> F
+C -d-> D
+C -d-> E
 
 @enduml
