@@ -43,31 +43,13 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Test if github supports plantuml:
 
-```plantuml
-A
-B
-C
-A -> B
-B -> C
-```
+[diagram test](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuN9KqBLJSE9o0b7EN0wfUIaWKG00)
 
-
-```plantuml
+<!--
 @startuml
-A
-B
-C
 A -> B
 B -> C
 @enduml
-```
-
-@startuml
-A
-B
-C
-A -> B
-B -> C
-@enduml
+-->
 
 
