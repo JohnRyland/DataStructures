@@ -43,7 +43,7 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Consider the binary tree shown in figure 1.
 
---
+-----
 
 ![Binary-Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu)<br>
 #### Figure 1. A binary tree
@@ -51,21 +51,21 @@ Consider the binary tree shown in figure 1.
 
 Depending on the traversal order used we will visit the nodes in the alphabetical order depicted, from A, B, C, D to E as shown in the below diagrams. In all cases we are still dereferencing the same chain of links in the same way, but the difference between them is where the current node is visted, whether it is visited before descending the left side of the node (pre-order), between descending the left and right side (in-order), or after descending both the left and right sides (post-order).
 
---
+-----
 
 ![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)<br>
 #### Figure 2. In-order traversal of a binary tree
 
---
+-----
 
 ![Binary-Tree Pre-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu)<br>
 #### Figure 3. Pre-order traversal of a binary tree
 
---
+-----
 
 ![Binary-Tree Post-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu)<br>
 #### Figure 4. Post-order traversal of a binary tree
 
---
+-----
 
 
