@@ -1,0 +1,13 @@
+@startuml
+!theme cerulean-outline
+package Array_Of_Structures <<Rectangle>> {
+object Items {
+| Node  | firstChild | nextSibling | Data    |
+| A     |  B         | -1          |         |
+| B     |  C         |  E          |         |
+| C     | -1         |  D          |         |
+| D     | -1         | -1          |         |
+| E     | -1         | -1          |         |
+}
+}
+@enduml
