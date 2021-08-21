@@ -138,6 +138,8 @@ If we recall our earlier tree example in figure 1, when rearranged in this way i
 #### Figure 8. Intrusive tree
 -----
 
+Space wise this is no different than a binary tree when used as a binary tree, but can be used to have nodes with arbitary numbers of children.
+
 
 ## Cache friendly structures
 
