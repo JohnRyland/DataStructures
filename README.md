@@ -49,15 +49,17 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Consider the binary tree shown in figure 1.
 
-<center>
-![Binary-Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu)</center><br/>
+<p align="center">
+  ![Binary-Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu)
+</p>
 #### Figure 1. A binary tree
 -----
 
 Depending on the traversal order used we will visit the nodes in the alphabetical order depicted, from A, B, C, D to E as shown in the below diagrams. In all cases we are still dereferencing the same chain of links in the same way, but the difference between them is where the current node is visited, whether it is visited before descending the left side of the node (pre-order), between descending the left and right side (in-order), or after descending both the left and right sides (post-order).
 
-<center>
-![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)</center><br/>
+<p align="center">
+![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)
+</p>
 #### Figure 2. In-order traversal of a binary tree
 -----
 
@@ -203,8 +205,8 @@ The index column doesn't need to explicitly exist but can be inferred by the pos
 
 It hopefully should be obvious that we can rearrange the rows of the table without changing the implied tree and tree order provided we correspondingly update the indexes based on any rearrangements we make. For example if we swap rows 2 and 3 and fix up the indexes like follows:
 
-<center>
 
+<p align="center">
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
 |     0  | A     |  1         | -1          |         |
@@ -212,12 +214,12 @@ It hopefully should be obvious that we can rearrange the rows of the table witho
 |     2  | D     | -1         | -1          |         |
 |     3  | C     | -1         |  2          |         |
 |     4  | E     | -1         | -1          |         |
+</p>
 
-</center>
 
 This still represents the same tree. So if we removed a node from the tree, we could do this by simply blanking out the row of the table and adjusting the indexes that refered to it. For example if we were to delete node D from the above table / tree.
 
-<center>
+<p align="center">
 
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
@@ -227,7 +229,7 @@ This still represents the same tree. So if we removed a node from the tree, we c
 |     3  | C     | -1         | -1          |         |
 |     4  | E     | -1         | -1          |         |
 
-</center>
+</p>
 
 All the same tree like operations are possible, it's just a slightly different way of thinking about it. But what this does allow is when full traversal is needed it can be done in a more efficient manner.
 
