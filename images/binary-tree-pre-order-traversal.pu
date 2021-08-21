@@ -13,8 +13,8 @@ rectangle D
 rectangle E
 rectangle F
 
-A -d-> B
-B -d-> C
+A -d> B
+B -d> C
 B -d-> F
 C -d-> D
 C -d-> E
