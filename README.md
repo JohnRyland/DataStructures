@@ -1,9 +1,3 @@
-<style>
-.markdown-body table {
-  width: 200px
-}
-</style>
-
 # Data Structures
 Ideas about types of data structures
 
@@ -176,6 +170,13 @@ We combine this together with our better intrusive tree node, and we have a tabl
 
 #### Figure 9. Pool tree node
 -----
+
+<style>
+.markdown-body table {
+  width: 200px
+}
+</style>
+
 
 So we can imagine these nodes inside of an array or table. Here is how to think about it:
 
