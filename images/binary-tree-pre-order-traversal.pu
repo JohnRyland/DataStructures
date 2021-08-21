@@ -1,24 +1,12 @@
 @startuml
-
 top to bottom direction
-
-skinparam ArrowColor DeepSkyBlue
-skinparam rectangleBackgroundColor DeepSkyBlue
-skinparam rectangleBorderColor DeepSkyBlue
-
-rectangle A
-rectangle B
-rectangle C
-rectangle D
-rectangle E
-rectangle F
-rectangle G
-
-A -d> B
-B -d> C
-B -d> F
-C -d> D
-C -d> E
-A -> G
-
+!theme cerulean-outline
+(A) --> (B): 1
+(B) --> (C): 2
+(C) --> (D): 3
+(D) ..> (C): 4
+(C) --> (E): 5
+(E) ..> (C): 6
+(C) ..> (B): 7
+(B) --> (F): 8
 @enduml
