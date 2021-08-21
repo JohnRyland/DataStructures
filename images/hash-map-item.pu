@@ -1,0 +1,9 @@
+@startuml
+top to bottom direction
+!theme cerulean-outline
+object HashMapItem {
+  uin64_t hash
+  const char* key
+  DataType value
+}
+@enduml
