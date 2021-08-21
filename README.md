@@ -1,3 +1,9 @@
+<style>
+.markdown-body table {
+  width: 200px
+}
+</style>
+
 # Data Structures
 Ideas about types of data structures
 
