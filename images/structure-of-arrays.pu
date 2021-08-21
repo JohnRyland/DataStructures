@@ -1,0 +1,37 @@
+@startuml
+!theme cerulean-outline
+package Structure_Of_Arrays <<Rectangle>> {
+together {
+object data {
+|        |
+|        |
+|        |
+|        |
+|        |
+}
+object nextSibling {
+| -1          |         
+|  E          |         
+|  D          |         
+| -1          |         
+| -1          |         
+}
+}
+together {
+object firstChild {
+|  B         |
+|  C         |
+| -1         |
+| -1         |
+| -1         |
+}
+object Node {
+| A     |
+| B     |
+| C     |
+| D     |
+| E     |
+}
+}
+}
+@enduml
