@@ -1,0 +1,27 @@
+@startuml
+!theme cerulean-outline
+object A {
+  nextSibling
+  firstChild
+}
+object B {
+  nextSibling
+  firstChild
+}
+object C {
+  nextSibling
+  firstChild
+}
+object D {
+  nextSibling
+  firstChild
+}
+object E {
+  nextSibling
+  firstChild
+}
+A::firstChild --> B
+B::firstChild --> C
+B::nextSibling -r-> E
+C::nextSibling -r-> D
+@enduml
