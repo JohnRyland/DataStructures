@@ -228,6 +228,21 @@ nextFree = 2
 |     5  |      6   | -1    | -1         | -1          |         |
 
 
+## Potential use cases
+
+A conceptual tree is used widely to represent heirarchies. Heirarchies are useful for grouping and providing structure to information. One example you are using right now to view this page is HTML which is a heirarchy of elements that are arranged in a document object model, or DOM. It is the tree of elements that make up the page. The page is stored in HTML that is XML which is a way to nest elements, a textual representation of that tree.
+
+Browsers keep this DOM in memory. Then javascript can execute which can do a number of things to it. It can search it, searching by id, tag, class etc. It can create new nodes in the DOM and manipulate the DOM in various ways. The DOM is also used to apply CSS. CSS uses selectors to determine which styles apply to which collections of elements. The selectors can be things like a given id, or something like a particular type of tag followed by another particular type of tag, or a tag that is a child of a particular other tag. For some of these, the DOM is required to determine which elements belong to the set of elements that the style applies to. Also the DOM is used for the visual representation of the page, following a box model where unless the element uses non-default positioning, each element is visually nested in each other when they are a child of another node in the DOM.
+
+In memory as a table structure as apposed to a traditional pointer tree, the data can be seen more as a database than as a tree. Databases can be indexed in various ways to provide fast lookups. This indexing can be similar to how we originally described sorting an array with qsort and searching it with bsearch. A side table is made with the search column and an original index column and then is sorted by the search column. Searching this table and finding a match allows reading the original index column to be able to refer back to the orignal table and find the element.
+
+For large databases this is an efficient way to search and find one element from potentially millions of elements. However if searching from a collection of only perhaps 100 elements, and trying to find multiple matches with potentially multiple search criteria with frequently changing data, it might not be worth maintaining this kind of indexing of the data. For every field that could be searched the corresponding index table would need to be maintained when ever the tree is changed.
+
+We haven't yet looked at hash tables in detail, but these can help us with searching our data in a way that is easier to update.
+
+Lets just quickly look at a few other practical examples where tree structures are used. In games, often the objects in the game (commonly called GameObjects) are frequently represented conceptually in a tree. In user interfaces, the widgets are also commonly in a conceptual tree similar to how HTML's DOM of nested elements as a visual structure to a page or in the case of user interfaces of a window composed of widgets.
+
+
 ## Hash tables and hashes
 
 String keys. Hashing...
