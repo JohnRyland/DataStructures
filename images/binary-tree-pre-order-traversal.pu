@@ -12,11 +12,13 @@ rectangle C
 rectangle D
 rectangle E
 rectangle F
+rectangle G
 
 A -d> B
 B -d> C
 B -d> F
 C -d> D
 C -d> E
+A -> G
 
 @enduml
