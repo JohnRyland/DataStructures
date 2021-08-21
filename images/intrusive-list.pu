@@ -1,0 +1,20 @@
+@startuml
+!theme cerulean-outline
+object Item1 {
+  value
+  next
+}
+object Item2 {
+  value
+  next
+}
+object Item3 {
+  value
+  next
+}
+object NULL
+
+Item1::next --> Item2
+Item2::next --> Item3
+Item3::next --> NULL
+@enduml
