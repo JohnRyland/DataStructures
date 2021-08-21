@@ -228,3 +228,25 @@ nextFree = 2
 |     5  |      6   | -1    | -1         | -1          |         |
 
 
+## Hash tables and hashes
+
+String keys. Hashing...
+
+HashMapItem
+Hash
+Key
+Value
+
+
+## SoA vs AoS
+
+arranging data by access patterns
+
+
+## Member ordering
+
+packing vs padding
+
+reasons for padding
+
+
