@@ -1,4 +1,9 @@
 @startuml
-A -> B
-B -> A
+top to bottom direction
+!theme cerulean-outline
+(A) --> (B)
+(B) --> (C)
+(B) --> (F)
+(C) --> (D)
+(C) --> (E)
 @enduml
