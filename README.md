@@ -247,6 +247,6 @@ arranging data by access patterns
 
 packing vs padding
 
-reasons for padding
+reasons for padding - machine memory alignment. stuffing data in the low order bits of pointers. reasons to deliberately pad out data structures - false sharing.
 
 
