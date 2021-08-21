@@ -43,7 +43,9 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Test if github supports plantuml:
 
-[diagram test](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuN9KqBLJSE9o0b7EN0wfUIaWKG00)
+![diagram test](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuN9KqBLJSE9o0b7EN0wfUIaWKG00)
+
+![Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/tree.pu)
 
 <!--
 @startuml
