@@ -175,28 +175,14 @@ We combine this together with our better intrusive tree node, and we have a tabl
 
 So we can imagine these nodes inside of an array or table. Here is how to think about it:
 
-
-| Node  | firstChild | nextSibling | Data    |
-| ----: | ---------: | ----------: | :------ |
-| A     |  B         | -1          |         |
-| B     |  C         |  E          |         |
-| C     | -1         |  D          |         |
-| D     | -1         | -1          |         |
-| E     | -1         | -1          |         |
+<p align="center"><img alt="Tree Table 1" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-1.pu" /></p>
 
 #### Table 1. Tree as a table
 -----
 
 The references should be indexes in to the array. Lets change those.
 
-
-| Index  | Node  | firstChild | nextSibling | Data    |
-| -----: | ----: | ---------: | ----------: | :------ |
-|     0  | A     |  1         | -1          |         |
-|     1  | B     |  2         |  4          |         |
-|     2  | C     | -1         |  3          |         |
-|     3  | D     | -1         | -1          |         |
-|     4  | E     | -1         | -1          |         |
+<p align="center"><img alt="Tree Table 2" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-2.pu" /></p>
 
 #### Table 2. Tree table with illustrative indexes
 -----
@@ -205,28 +191,14 @@ The index column doesn't need to explicitly exist but can be inferred by the pos
 
 It hopefully should be obvious that we can rearrange the rows of the table without changing the implied tree and tree order provided we correspondingly update the indexes based on any rearrangements we make. For example if we swap rows 2 and 3 and fix up the indexes like follows:
 
-
-| Index  | Node  | firstChild | nextSibling | Data    |
-| -----: | ----: | ---------: | ----------: | :------ |
-|     0  | A     |  1         | -1          |         |
-|     1  | B     |  3         |  4          |         |
-|     2  | D     | -1         | -1          |         |
-|     3  | C     | -1         |  2          |         |
-|     4  | E     | -1         | -1          |         |
+<p align="center"><img alt="Tree Table 3" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-3.pu" /></p>
 
 #### Table 3. Tree table with swapped entries
 -----
 
 This still represents the same tree. So if we removed a node from the tree, we could do this by simply blanking out the row of the table and adjusting the indexes that refered to it. For example if we were to delete node D from the above table / tree.
 
-
-| Index  | Node  | firstChild | nextSibling | Data    |
-| -----: | ----: | ---------: | ----------: | :------ |
-|     0  | A     |  1         | -1          |         |
-|     1  | B     |  3         |  4          |         |
-|     2  | -1    | -1         | -1          |         |
-|     3  | C     | -1         | -1          |         |
-|     4  | E     | -1         | -1          |         |
+<p align="center"><img alt="Tree Table 4" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-4.pu" /></p>
 
 #### Table 4. Tree table with removed entry
 -----
@@ -238,14 +210,7 @@ We could add another column that marks if the node has been deleted and is in th
 
 nextFree = 2
 
-| Index  | nextFree | Node  | firstChild | nextSibling | Data    |
-| -----: | -------: | ----: | ---------: | ----------: | :------ |
-|     0  |     -1   | A     |  1         | -1          |         |
-|     1  |     -1   | B     |  3         |  4          |         |
-|     2  |      5   | -1    | -1         | -1          |         |
-|     3  |     -1   | C     | -1         | -1          |         |
-|     4  |     -1   | E     | -1         | -1          |         |
-|     5  |      6   | -1    | -1         | -1          |         |
+<p align="center"><img alt="Tree Table 5" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-5.pu" /></p>
 
 #### Table 5. Tree table with free list
 -----
