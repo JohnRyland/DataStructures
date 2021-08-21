@@ -132,6 +132,12 @@ But we can do better. It might not be immediately obvious but we can represent t
 #### Figure 7. A better intrusive tree node
 -----
 
+If we recall our earlier tree example in figure 1, when rearranged in this way it would appear as below in figure 8 using this alternative representation.
+
+![Intrusive Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree.pu)<br>
+#### Figure 8. Intrusive tree
+-----
+
 
 ## Cache friendly structures
 
@@ -147,10 +153,10 @@ The way malloc is frequently implemented is first by pre-allocating a chunk of m
 
 With a memory pool impementation, it too could implement such a concept as a free list. Because typically memory pools are for fixed sized allocations, the free list only needs to take the first item it finds, it doesn't need to search for a better fitting free chunk of memory. This is wonderful as allocations can be done in constant time if the pool can be guarenteed to be created large enough for the peak number of items it ever needs to allocate. Deallocations can also be in constant time as it simply adds the item back in to the free list.
 
-We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure 8.
+We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure 9.
 
 ![Pool Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu)<br>
-#### Figure 8. Pool tree node
+#### Figure 9. Pool tree node
 -----
 
 
