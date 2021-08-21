@@ -111,4 +111,24 @@ An intrusive list is one where the items contained in the list themselves have t
 The non-intrusive list has the advantage that the item doesn't need to know it belongs to a list so can be used on arbitary data, however the downside is that additional small allocations will be needed for the nodes and additional pointer dereferences to access the data. Depending how the nodes and items are allocated, this may cause access patterns that are not well tuned with the way computers cache memory.
 
 
+## Intrusive hash tables, binary trees
+
+Once the concept of intrusive lists is understood, it is not a big jump to realize that this can be easily be applied to binary trees and hash tables. Given that a hash table is buckets of linked lists, changing those lists to intrusive lists is almost a no-op of mental activity. As well it should be fairly obvious how to make binary tree nodes be intrusive also.
+
+
+## Implementation details of m-ary trees
+
+A binary tree is a fairly easy concept to understand once linked lists are understood. Instead of a next pointer in each node, the node contains a left pointer and right pointer. The more general case is a m-ary tree which has instead of just 2 children, has m children. Each node might consist of a parent pointer and an array of children pointers such as in figure 7.
+
+![Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/tree-node.pu)<br>
+#### Figure 7. Tree node
+-----
+
+This example is intrusive similar to previous examples, however contained in each node is another data structure, the list of children. This is unfortunate. The list is a list of pointers, so in effect it is a non-intrusive list.
+
+But we can do better. It might not be immediately obvious but we can represent the same information in another way. Instead of thinking about each element as having a parent and multiple children, another way of framing this is that each element has a parent, an eldest child and a next youngest sibling. This suprisingly is the same amount of pointers a binary tree contains if including parent pointers (optional in both cases depending on your requirements). You can iterate all children by jumping to the eldest child, then from that element iterating the next youngest siblings across.
+
+![Intrusive Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree-node.pu)<br>
+#### Figure 7. A better intrusive tree node
+-----
 
