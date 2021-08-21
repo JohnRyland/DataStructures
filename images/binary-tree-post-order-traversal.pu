@@ -1,0 +1,15 @@
+@startuml
+top to bottom direction
+!theme cerulean-outline
+(E) ..> (C): 1
+(C) ..> (A): 2
+(A) --> (A): 3
+(A) ..> (C): 4
+(C) ..> (B): 5
+(B) --> (B): 6
+(B) --> (C): 7
+(C) ..> (E): 8
+(E) ..> (D): 9
+(D) --> (D): 10
+(D) --> (E): 11
+@enduml
