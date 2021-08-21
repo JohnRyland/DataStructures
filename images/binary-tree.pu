@@ -2,8 +2,7 @@
 top to bottom direction
 !theme cerulean-outline
 (A) --> (B)
+(A) --> (E)
 (B) --> (C)
-(B) --> (F)
-(C) --> (D)
-(C) --> (E)
+(B) --> (D)
 @enduml
