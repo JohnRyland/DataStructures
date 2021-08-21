@@ -165,11 +165,66 @@ So we can imagine these nodes inside of an array or table. Here is how to think 
 
 
 | Node  | firstChild | nextSibling | Data    |
-| :---- | :--------- | :---------- | :------ |
-| A     | B          | -1          |         |
-| B     | C          | E           |         |
-| C     | -1         | D           |         |
+| ----: | ---------: | ----------: | :------ |
+| A     |  B         | -1          |         |
+| B     |  C         |  E          |         |
+| C     | -1         |  D          |         |
 | D     | -1         | -1          |         |
 | E     | -1         | -1          |         |
+
+
+The references should be indexes in to the array. Lets change those.
+
+
+| Index  | Node  | firstChild | nextSibling | Data    |
+| -----: | ----: | ---------: | ----------: | :------ |
+|     0  | A     |  1         | -1          |         |
+|     1  | B     |  2         |  4          |         |
+|     2  | C     | -1         |  3          |         |
+|     3  | D     | -1         | -1          |         |
+|     4  | E     | -1         | -1          |         |
+
+
+The index column doesn't need to explicitly exist but can be inferred by the position in the array, but it should help follow where the firstChild and nextSibling point to.
+
+It hopefully should be obvious that we can rearrange the rows of the table without changing the implied tree and tree order provided we correspondingly update the indexes based on any rearrangements we make. For example if we swap rows 2 and 3 and fix up the indexes like follows:
+
+
+| Index  | Node  | firstChild | nextSibling | Data    |
+| -----: | ----: | ---------: | ----------: | :------ |
+|     0  | A     |  1         | -1          |         |
+|     1  | B     |  3         |  4          |         |
+|     2  | D     | -1         | -1          |         |
+|     3  | C     | -1         |  2          |         |
+|     4  | E     | -1         | -1          |         |
+
+
+This still represents the same tree. So if we removed a node from the tree, we could do this by simply blanking out the row of the table and adjusting the indexes that refered to it. For example if we were to delete node D from the above table / tree.
+
+
+| Index  | Node  | firstChild | nextSibling | Data    |
+| -----: | ----: | ---------: | ----------: | :------ |
+|     0  | A     |  1         | -1          |         |
+|     1  | B     |  3         |  4          |         |
+|     2  | -1    | -1         | -1          |         |
+|     3  | C     | -1         | -1          |         |
+|     4  | E     | -1         | -1          |         |
+
+
+All the same tree like operations are possible, it's just a slightly different way of thinking about it. But what this does allow is when full traversal is needed it can be done in a more efficient manner.
+
+We could add another column that marks if the node has been deleted and is in the free list and chain these blanked rows so they can be allocated from.
+
+
+nextFree = 2
+
+| Index  | nextFree | Node  | firstChild | nextSibling | Data    |
+| -----: | -------: | ----: | ---------: | ----------: | :------ |
+|     0  |     -1   | A     |  1         | -1          |         |
+|     1  |     -1   | B     |  3         |  4          |         |
+|     2  |      5   | -1    | -1         | -1          |         |
+|     3  |     -1   | C     | -1         | -1          |         |
+|     4  |     -1   | E     | -1         | -1          |         |
+|     5  |      6   | -1    | -1         | -1          |         |
 
 
