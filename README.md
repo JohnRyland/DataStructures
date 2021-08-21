@@ -96,15 +96,19 @@ Trees and hash tables are almost as easy as lists for supporting insertions and 
 
 So far this discussion of data structures has been mostly theoretical. But what about some actual implementation detail considerations.
 
-The first I want to talk about is intrusive vs non-intrusive implementations. An intrusive list is one where the items contained in the list themselves have the next pointers.
-
+The first I want to talk about is intrusive vs non-intrusive implementations.
 
 ![Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-list.pu)<br>
 #### Figure 5. Intrusive List
 -----
 
+An intrusive list is one where the items contained in the list themselves have the next pointers as shown in figure 5 where the `value` member and `next` member are both in the nodes.
+
 ![Non-Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/non-intrusive-list.pu)<br>
 #### Figure 6. Non-Intrusive List
 -----
+
+The non-intrusive list has the advantage that the item doesn't need to know it belongs to a list so can be used on arbitary data, however the downside is that additional small allocations will be needed for the nodes and additional pointer dereferences to access the data. Depending how the nodes and items are allocated, this may cause access patterns that are not well tuned with the way computers cache memory.
+
 
 
