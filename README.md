@@ -253,6 +253,17 @@ In the case of strings, if our input strings have common prefixes, then when we 
 arranging data by access patterns
 
 
+<p align="center"><img alt="Array Of Structures" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/array-of-structures.pu" /></p>
+
+#### Figure 11. Array of structures
+-----
+
+<p align="center"><img alt="Structure Of Arrays" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/structure-of-arrays.pu" /></p>
+
+#### Figure 12. Structure of arrays
+-----
+
+
 ## Member ordering
 
 packing vs padding
