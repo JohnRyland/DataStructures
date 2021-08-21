@@ -15,8 +15,8 @@ rectangle F
 
 A -d> B
 B -d> C
-B -d-> F
-C -d-> D
-C -d-> E
+B -d> F
+C -d> D
+C -d> E
 
 @enduml
