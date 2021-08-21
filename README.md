@@ -49,9 +49,9 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Consider the binary tree shown in figure 1.
 
-<div style="text-align:center">
+<p align="center">
 <img alt="Binary Tree" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu" />
-</div>
+</p>
 
 #### Figure 1. A binary tree
 -----
@@ -60,9 +60,8 @@ Depending on the traversal order used we will visit the nodes in the alphabetica
 
 <p align="center">
 <img alt="Binary-Tree In-Order Tarversal" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu" />
-</p>
-
 #### Figure 2. In-order traversal of a binary tree
+</p>
 -----
 
 <center>
