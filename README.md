@@ -132,3 +132,26 @@ But we can do better. It might not be immediately obvious but we can represent t
 #### Figure 7. A better intrusive tree node
 -----
 
+
+## Cache friendly structures
+
+As already mentioned, memory access patterns are important. Accessing memory by blocks at a time or sequentially is better than accessing small amounts of it randomly. Also if our data structures are smaller we can make better use of the available memory bandwidth.
+
+As machines have moved from 32-bits to 64-bits, the corresponding size of a pointer has doubled from 4 bytes to 8 bytes. This makes using pointers more expensive. From this point of view one of the best data structures is the humble array and using indexes in to the array instead of pointers. Arrays are cache friendly and provided the array will not have more than 4 billion items, can be cheaper to reference items of the array using indexes.
+
+With all of the data structures looked at so far, there is no reason that the items of these could not be allocated out of a pool instead. The concept is simple. A memory pool is simply a large pre-allocated chunk of memory. Then fixed size items can be allocated out of this pool. For example if we have a linked list, each list item could be allocated from a memory pool associated with this linked list. When it is time to delete the entire list, a single deallocation of the chunk of memory the pool pre-allocated can be made, effectively deleting all the items.
+
+Now all the items of the list are in memory with addresses that are close together. Practically the list is almost an array. This isn't a great example as most of the time you would be better off just using an array and avoiding the complexities of needing a memory pool.
+
+The way malloc is frequently implemented is first by pre-allocating a chunk of memory from the heap. Then a number of pools are created for different sized allocations. Then when a request for a certain sized piece of memory is made it will check the appropriate pool and walk what is called the free list to find an available piece of memory to return. Malloc also needs to be thread-safe so there will often be a mutex that needs to be locked. The free list is often just a linked list inside each of the pools linking together the free sections of memory using that free memory itself as the nodes. When an allocation is made, it adjusts the free list to jump past that allocated piece of memory. And when memory is freed it does the reverse, adding the freed memory back in to the free list.
+
+With a memory pool impementation, it too could implement such a concept as a free list. Because typically memory pools are for fixed sized allocations, the free list only needs to take the first item it finds, it doesn't need to search for a better fitting free chunk of memory. This is wonderful as allocations can be done in constant time if the pool can be guarenteed to be created large enough for the peak number of items it ever needs to allocate. Deallocations can also be in constant time as it simply adds the item back in to the free list.
+
+We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure 8.
+
+![Pool Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu)<br>
+#### Figure 8. Pool tree node
+-----
+
+
+
