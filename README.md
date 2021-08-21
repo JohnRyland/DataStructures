@@ -49,21 +49,21 @@ A binary tree has three types of traversal. An in-order traversal, a pre-order t
 
 Consider the binary tree shown in figure 1.
 
-<center>![Binary-Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu)</center><br/>
+<center> ![Binary-Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree.pu)</center><br/>
 #### Figure 1. A binary tree
 -----
 
 Depending on the traversal order used we will visit the nodes in the alphabetical order depicted, from A, B, C, D to E as shown in the below diagrams. In all cases we are still dereferencing the same chain of links in the same way, but the difference between them is where the current node is visited, whether it is visited before descending the left side of the node (pre-order), between descending the left and right side (in-order), or after descending both the left and right sides (post-order).
 
-<center>![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)</center><br/>
+<center> ![Binary-Tree In-Order Tarversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-in-order-traversal.pu)</center><br/>
 #### Figure 2. In-order traversal of a binary tree
 -----
 
-<center>![Binary-Tree Pre-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu)</center><br/>
+<center> ![Binary-Tree Pre-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-pre-order-traversal.pu)</center><br/>
 #### Figure 3. Pre-order traversal of a binary tree
 -----
 
-<center>![Binary-Tree Post-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu)</center><br/>
+<center> ![Binary-Tree Post-Order Traversal](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/binary-tree-post-order-traversal.pu)</center><br/>
 #### Figure 4. Post-order traversal of a binary tree
 -----
 
@@ -98,13 +98,13 @@ So far this discussion of data structures has been mostly theoretical. But what 
 
 The first I want to talk about is intrusive vs non-intrusive implementations.
 
-<center>![Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-list.pu)</center><br/>
+<center> ![Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-list.pu)</center><br/>
 #### Figure 5. Intrusive List
 -----
 
 An intrusive list is one where the items contained in the list themselves have the next pointers as shown in figure 5 where the `value` member and `next` member are both in the nodes.
 
-<center>![Non-Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/non-intrusive-list.pu)</center><br/>
+<center> ![Non-Intrusive List](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/non-intrusive-list.pu)</center><br/>
 #### Figure 6. Non-Intrusive List
 -----
 
@@ -120,7 +120,7 @@ Once the concept of intrusive lists is understood, it is not a big jump to reali
 
 A binary tree is a fairly easy concept to understand once linked lists are understood. Instead of a next pointer in each node, the node contains a left pointer and right pointer. The more general case is a m-ary tree which has instead of just 2 children, has m children. Each node might consist of a parent pointer and an array of children pointers such as in figure 7.
 
-<center>![Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/tree-node.pu)</center><br/>
+<center> ![Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/tree-node.pu)</center><br/>
 #### Figure 7. Tree node
 -----
 
@@ -128,13 +128,13 @@ This example is intrusive similar to previous examples, however contained in eac
 
 But we can do better. It might not be immediately obvious but we can represent the same information in another way. Instead of thinking about each element as having a parent and multiple children, another way of framing this is that each element has a parent, an eldest child and a next youngest sibling. This suprisingly is the same amount of pointers a binary tree contains if including parent pointers (optional in both cases depending on your requirements). You can iterate all children by jumping to the eldest child, then from that element iterating the next youngest siblings across.
 
-<center>![Intrusive Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree-node.pu)</center><br/>
+<center> ![Intrusive Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree-node.pu)</center><br/>
 #### Figure 7. A better intrusive tree node
 -----
 
 If we recall our earlier tree example in figure 1, when rearranged in this way it would appear as below in figure 8 using this alternative representation.
 
-<center>![Intrusive Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree.pu)</center><br/>
+<center> ![Intrusive Tree](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/intrusive-tree.pu)</center><br/>
 #### Figure 8. Intrusive tree
 -----
 
@@ -157,13 +157,14 @@ With a memory pool impementation, it too could implement such a concept as a fre
 
 We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure 9.
 
-<center>![Pool Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu)</center><br/>
+<center> ![Pool Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu)</center><br/>
 #### Figure 9. Pool tree node
 -----
 
 So we can imagine these nodes inside of an array or table. Here is how to think about it:
 
 <center>
+
 | Node  | firstChild | nextSibling | Data    |
 | ----: | ---------: | ----------: | :------ |
 | A     |  B         | -1          |         |
@@ -171,11 +172,13 @@ So we can imagine these nodes inside of an array or table. Here is how to think 
 | C     | -1         |  D          |         |
 | D     | -1         | -1          |         |
 | E     | -1         | -1          |         |
+
 </center>
 
 The references should be indexes in to the array. Lets change those.
 
 <center>
+
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
 |     0  | A     |  1         | -1          |         |
@@ -183,6 +186,7 @@ The references should be indexes in to the array. Lets change those.
 |     2  | C     | -1         |  3          |         |
 |     3  | D     | -1         | -1          |         |
 |     4  | E     | -1         | -1          |         |
+
 </center>
 
 The index column doesn't need to explicitly exist but can be inferred by the position in the array, but it should help follow where the firstChild and nextSibling point to.
@@ -190,6 +194,7 @@ The index column doesn't need to explicitly exist but can be inferred by the pos
 It hopefully should be obvious that we can rearrange the rows of the table without changing the implied tree and tree order provided we correspondingly update the indexes based on any rearrangements we make. For example if we swap rows 2 and 3 and fix up the indexes like follows:
 
 <center>
+
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
 |     0  | A     |  1         | -1          |         |
@@ -197,11 +202,13 @@ It hopefully should be obvious that we can rearrange the rows of the table witho
 |     2  | D     | -1         | -1          |         |
 |     3  | C     | -1         |  2          |         |
 |     4  | E     | -1         | -1          |         |
+
 </center>
 
 This still represents the same tree. So if we removed a node from the tree, we could do this by simply blanking out the row of the table and adjusting the indexes that refered to it. For example if we were to delete node D from the above table / tree.
 
 <center>
+
 | Index  | Node  | firstChild | nextSibling | Data    |
 | -----: | ----: | ---------: | ----------: | :------ |
 |     0  | A     |  1         | -1          |         |
@@ -209,6 +216,7 @@ This still represents the same tree. So if we removed a node from the tree, we c
 |     2  | -1    | -1         | -1          |         |
 |     3  | C     | -1         | -1          |         |
 |     4  | E     | -1         | -1          |         |
+
 </center>
 
 All the same tree like operations are possible, it's just a slightly different way of thinking about it. But what this does allow is when full traversal is needed it can be done in a more efficient manner.
@@ -216,6 +224,7 @@ All the same tree like operations are possible, it's just a slightly different w
 We could add another column that marks if the node has been deleted and is in the free list and chain these blanked rows so they can be allocated from.
 
 <center>
+
 nextFree = 2
 
 | Index  | nextFree | Node  | firstChild | nextSibling | Data    |
@@ -226,6 +235,7 @@ nextFree = 2
 |     3  |     -1   | C     | -1         | -1          |         |
 |     4  |     -1   | E     | -1         | -1          |         |
 |     5  |      6   | -1    | -1         | -1          |         |
+
 </center>
 
 ## Potential use cases
