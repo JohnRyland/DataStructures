@@ -268,13 +268,60 @@ We call this a structure of arrays. This is in contrast to an array of structure
 
 There is more complexity in dealing with a structure of arrays, however in terms of overall space occupied by the data, there should be no difference, or there is the possibility that if the original structure was poorly arranged there may have been wasted space with padding that will not exist in the structure of arrays layout, in fact making it more efficient. We'll discuss in more depth structure memory ordering and padding a bit later.
 
-It is not neccessary to split up and put each field in to it's own array. If some fields are frequently access together then it makes sense to keep them together. For example a 3d point made up of x, y and z components or colors made up of red, green and blue. If these are inside of a larger structure that contains several positions, a velocity, a color and so on, then it would be reasonable to keep some individual components together if they are accessed together, but to more others that are not to their own arrays.
+It is not neccessary to split up and put each field in to it's own array. If some fields are frequently access together then it makes sense to keep them together. For example a 3d point made up of x, y and z components or colors made up of red, green and blue. If these are inside of a larger structure that contains several positions, a velocity, a color and so on, then it would be reasonable to keep some individual components together if they are accessed together, and move others to their own arrays.
 
 
 ## Member ordering
 
-Packing and padding. Packing is making a structure smaller. Padding is making it larger. There are reasons padding is added. The compiler does this automatically.
+Packing and padding. Packing is making a structure smaller. Padding is making it larger. There are reasons padding is added. The compiler does this automatically. It is required to do this because of the way CPUs operate. Most CPUs when accessing a 32-bit wide word of memory need to be accessing it with 32-bit alignment. That means the address to that 32-bit word needs to be a multiple of 4 bytes, the first it can access is at address 0, the next at address 4, then 8 and so on. For accessing a 64-bit word, the address needs to be a multiple of 8. For 16-bit wide words, the addresses need to be a multiple of 2. There are some CPUs where not doing this results in a hardware fault being raised, and your program will crash. Some CPUs can allow a program to attempt to access memory unaligned, but behind the scenes the CPU automatically does two accesses to the neighbouring pair of aligned addresses and swizzles the bytes to give the appearance it did the unaligned access. On some CPUs you incur a penalty for this, and most certainly such memory operations can never be atomic, in the worst case, the memory access straddles cache lines.
 
-reasons for padding - machine memory alignment. stuffing data in the low order bits of pointers. reasons to deliberately pad out data structures - false sharing.
+Some CPUs do the hardware fault thing, but the OS handles the fault and makes it transparently seem like the unaligned access is possible. Obviously the penalty for this quite bad, however the program won't crash.
+
+There are some CPUs where it allows unaligned access and there is no penalty. But even when that is the case, the C language has defined rules about how structures are to be layed out. It requires members of structures to be aligned according to the size of their type, so a 32-bit member in a structure needs to be aligned to a 32-bit offset in the structure. If a structure contains a uint8_t followed by a uint32_t, the compiler is required to add 3 padding bytes between them to comply with this rule. This is padding.
+
+Consider a structure like this:
+
+```
+typedef struct s_structA
+{
+    uint8_t     a;
+    uint32_t    b;
+    uint8_t     c;
+    uint32_t    d;
+} structA;
+```
+
+The compiler will place 3 padding bytes between a and b, and another 3 between c and d. That is 6 bytes of space not being used for anything. The total sizeof this structure will be 16 bytes. When we are filling cache lines with this structure, 32.5% of the space is unused padding, reducing the memory bandwidth we can use by 1/3. If however we rearrange the members by size, either from smallest to largest or largest to smallest (I don't think it actually matters), then the size of the structure becomes 12 bytes instead, only 2 bytes of padding between c and b in the below:
+
+```
+typedef struct s_structA
+{
+    uint8_t     a;
+    uint8_t     c;
+    uint32_t    b;
+    uint32_t    d;
+} structA;
+```
+
+Where padding is added, we could carefully add other members and try to make use of that space. When we have collections of these and using SoA (structure of arrays), then there is no wasted space at all.
+
+Another neat thing about alignment is that pointers to a given sized type of item will be expected to have a certain alignment, so for example a pointer to a 32-bit value we can expect the pointer will be a multiple of 4. That means we expect the 2 lsb (lowest significant bits) of that pointer to be zeros. Consider this example:
+
+```
+typedef uint8_t bool8;
+
+struct Blah
+{
+  bool8      isX;
+  bool8      isY;
+  uint32_t*  pointerToA32bitThing;
+};
+```
+
+On a 64-bit machine the pointer will be 8 bytes in size and need to align to 8 bytes. In this example we are making the booleans 8-bits to illustrate a point. The two bools will take 2 bytes, then the compiler will add 6 padding bytes to align the pointer, and then there will be the pointer. The total size of this structure will be 16 btyes.
+
+Now we know the last two bits of the pointer will always be 0. This is not something you would do regularly or for code clarity, but if this was performance critical, you could put the two bools in those lsb bits of the pointer, hence halving the size of memory used by the structure. Of course when ever the code needs to dereference the pointer, it must first mask out the bools, adding complexity to the code, but if being able to fit twice as many of these structures in to each cache line means twice the through put for a given amount of memory bandwidth, it could truely be worth it in some rare circumstances.
+
+Now counter to what we have just learnt about how to avoid padding, there are times when padding is actually desirable. When we start looking at atomics, it will become apparent that sometimes we will want them to be on different cache lines so as to avoid something known as false sharing.
 
 
