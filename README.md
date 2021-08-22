@@ -250,8 +250,11 @@ In the case of strings, if our input strings have common prefixes, then when we 
 
 ## SoA vs AoS
 
-arranging data by access patterns
+As already mentioned, cache lines are 64 bytes and accessing just one byte always requires loading the entire cache line. If those neighbouring bytes are not accessed then only a small fraction of the memory bandwidth will be utilized. The way data is layed out is vitally important for ensuring that the executing code will not be throttled by cache misses and waiting for data to load. The way to lay out memory is to arrange it according to how it will be accessed. Place together data that will be access frequently together. In out hash table examples, open addressing hashing with linear probing and intrusive hash table items can suffer really bad performance if the size of the items is larger that the size of a cache line, however when the items are small, linear probing has few cache misses and performs better than the alternatives.
 
+Often we think in terms of individual items as a structure, and this structure is a single piece of memory. This is most convinent when you have a single item or when you want to pass this item around, such as between functions. However this is just one possible way to lay out this item in memory. When you have collections of such items, there is another possibility, instead of placing each field of the structure next to each other, one whole item followed by the next, to instead place one item's field next to the next item's field, and to then do this for each field. To access all the fields of a given item, one needs to lookup with the same index in to each of the arrays of each of the fields.
+
+We call this a structure of arrays. This is in contrast to an array of structures which is the more regular approach. Figures 11 and 12 illustrate the layout of each.
 
 <p align="center"><img alt="Array Of Structures" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/array-of-structures.pu" /></p>
 
@@ -263,10 +266,14 @@ arranging data by access patterns
 #### Figure 12. Structure of arrays
 -----
 
+There is more complexity in dealing with a structure of arrays, however in terms of overall space occupied by the data, there should be no difference, or there is the possibility that if the original structure was poorly arranged there may have been wasted space with padding that will not exist in the structure of arrays layout, in fact making it more efficient. We'll discuss in more depth structure memory ordering and padding a bit later.
+
+It is not neccessary to split up and put each field in to it's own array. If some fields are frequently access together then it makes sense to keep them together. For example a 3d point made up of x, y and z components or colors made up of red, green and blue. If these are inside of a larger structure that contains several positions, a velocity, a color and so on, then it would be reasonable to keep some individual components together if they are accessed together, but to more others that are not to their own arrays.
+
 
 ## Member ordering
 
-packing vs padding
+Packing and padding. Packing is making a structure smaller. Padding is making it larger. There are reasons padding is added. The compiler does this automatically.
 
 reasons for padding - machine memory alignment. stuffing data in the low order bits of pointers. reasons to deliberately pad out data structures - false sharing.
 
