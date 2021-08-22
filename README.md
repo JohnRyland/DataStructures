@@ -4,13 +4,13 @@ Ideas about types of data structures
 
 ## Introduction
 
-Data structures are a fundamental aspect to computer programming. They are as important as code. In fact the data structure chosen informs what the code must do, not the other way around.
+Data structures are a fundamental aspect of computer programming. They are as important as code. In fact the data structure chosen informs what the code must do, not the other way around.
 
 In this regard data structures are fundamental to any kind of pragmatic program.
 
 Pure functions are also fundermental. For example f(x), where f(x) = x * x. Realistically a pure function when implemented on a real machine will be interacting with memory such as a stack, and a stack is itself a data structure, so sometimes the data structures are there, but hidden.
 
-Some modern techniques also try to defer the choice of data structure to as late as possible. Consider the use of C++ container types being used in conjunction with the auto keyword. This can allow swapping out the container type rather easily allowing a change in data structure with minimal disruption to the consuming code. This is certainly a good idea in many situations. However there are plenty of things to be mindful of so I do not think this is a complete divorce of code from data structures. It reinforces the idea that choosing the right data structure is important, so much so that in case you get it wrong you will want to be able to change it easily.
+Some modern techniques also try to defer the choice of data structure to as late as possible. Consider the use of C++ container types being used in conjunction with the auto keyword. This can allow swapping out the container type rather easily allowing a change in data structure with minimal disruption to the consuming code. This is certainly a good idea in many situations. However there are plenty of things to be mindful of so I do not think this is a complete divorce of code from data structures. It reinforces the idea that choosing the right data structure is important, so important that in case you get it wrong you will want to be able to change it easily.
 
 
 ## Some basic data structures
@@ -29,9 +29,9 @@ Some have alternative or more specific names, but these are some of the most com
 
 ## Traversal
 
-The data structures need to be used by code to access them and update them. This is how the pros and cons of data structures are measured.
+The data structures need to be used by code to access them and update them. This is how the pros and cons of data structures are measured, how easily the various operations can be performed.
 
-Traversal of a data structure is one of the more fundametal operations that can be performed. Some data structures offer different traversals. Lets look quickly at each.
+Traversal of a data structure is one of the more fundametal operations. Some data structures offer different traversals. Lets look quickly at each.
 
 ### Array
 
