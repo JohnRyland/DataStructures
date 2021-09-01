@@ -118,6 +118,8 @@ An intrusive list is one where the items contained in the list themselves have t
 
 The non-intrusive list has the advantage that the item doesn't need to know it belongs to a list so can be used on arbitary data, however the downside is that additional small allocations will be needed for the nodes and additional pointer dereferences to access the data. Depending how the nodes and items are allocated, this may cause access patterns that are not well tuned with the way computers cache memory.
 
+On the other hand, if the size of each item is large, the non-intrusive list may actually be more cache friendly for certain operations, like traversal because the size of the nodes are smaller.
+
 
 ## Intrusive hash tables, binary trees
 
