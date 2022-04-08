@@ -1,5 +1,9 @@
+
 # Data Structures
-Ideas about types of data structures
+### Ideas about types of data structures
+
+Copyright (c) 2021, John Ryland
+All rights reserved.
 
 
 ## Introduction
