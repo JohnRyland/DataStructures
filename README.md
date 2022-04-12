@@ -221,6 +221,8 @@ nextFree = 2
 #### Table 5. Tree table with free list
 -----
 
+Alternatively, because we can swap entries in the array while preserving the integrity of the tree, we could swap the removed entry with the last entry in the array. This is the so called 'swap and pop' method of deletion.
+
 
 ## Potential use cases
 
