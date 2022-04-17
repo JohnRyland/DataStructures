@@ -172,19 +172,21 @@ The way malloc is frequently implemented is first by pre-allocating a chunk of m
 
 With a memory pool impementation, it too could implement such a concept as a free list. Because typically memory pools are for fixed sized allocations, the free list only needs to take the first item it finds, it doesn't need to search for a better fitting free chunk of memory. This is wonderful as allocations can be done in constant time if the pool can be guarenteed to be created large enough for the peak number of items it ever needs to allocate. Deallocations can also be in constant time as it simply adds the item back in to the free list.
 
-We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure 9.
+We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like `{#fig9}`.
 
-<p align="center"><img alt="Pool Tree Node" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu" /></p>
+![Pool Tree Node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu){ #fig9 style="align: center;" }
 
-#### Figure 9. Pool tree node
+*Figure 9. Pool tree node*
+
 -----
 
 So we can imagine these nodes inside of an array or table. Here is how to think about it:
 
-<p align="center"><img alt="Tree Table 1" src="http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-1.pu" /></p>
+![Tree Table 1](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/table-1.pu)
 
-#### Table 1. Tree as a table
------
+*Table 1. Tree as a table*
+
+----
 
 The references should be indexes in to the array. Lets change those.
 
