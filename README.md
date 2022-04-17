@@ -127,7 +127,7 @@ On the other hand, if the size of each item is large, the non-intrusive list may
 
 ## Intrusive hash tables, binary trees
 
-Once the concept of intrusive lists is understood, it is not a big jump to realize that this can be easily be applied to binary trees and hash tables. Given that a hash table is buckets of linked lists, changing those lists to intrusive lists is almost a no-op of mental activity. As well it should be fairly obvious how to make binary tree nodes be intrusive also.
+Once the concept of intrusive lists is understood, it is not a big jump to realize that this can be easily be applied to binary trees and hash tables. Given that a hash table is buckets of linked lists, changing those lists to intrusive lists is a no brainer. As well it should be fairly obvious how to make binary tree nodes be intrusive also.
 
 
 ## Implementation details of m-ary trees
@@ -222,6 +222,8 @@ nextFree = 2
 
 #### Table 5. Tree table with free list
 -----
+
+Alternatively, because we can swap entries in the array while preserving the integrity of the tree, we could swap the removed entry with the last entry in the array. This is the so called 'swap and pop' method of deletion.
 
 
 ## Potential use cases
