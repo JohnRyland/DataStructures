@@ -16,9 +16,14 @@ jobs:
       - name: Install tools
         run: |
           sudo apt update
-          sudo apt-get install -y doxygen graphviz plantuml
+          sudo apt install -y doxygen graphviz plantuml
+          sudo apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+          sudo apt install -y pandoc librsvg2-bin
+
       - name: Generate documentation
         run: |
+          git config --global user.name "John Ryland"
+          make pdfs
           make doxygen
           sed -i 's/object type="image\/svg+xml" data/img src/g' .build/docs/html/index.html
 
@@ -26,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: documentation
-          path: .build/docs/html
+          path: .build/docs
 
   job2:
     name: Publish
