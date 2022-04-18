@@ -1,5 +1,5 @@
 @startuml
-scale 200 width
+scale 0.5
 top to bottom direction
 !theme cerulean-outline
 (A) --> (A): 1
