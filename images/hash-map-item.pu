@@ -1,4 +1,5 @@
 @startuml
+scale 0.5
 top to bottom direction
 !theme cerulean-outline
 object HashMapItem {
