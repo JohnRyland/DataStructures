@@ -1,0 +1,4 @@
+
+# Ignore generated and cached files
+.build
+.modules
