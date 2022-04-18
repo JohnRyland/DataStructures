@@ -63,5 +63,5 @@ jobs:
           git add .
           git commit -m "Publish documentation" || true
           git config pull.rebase false
-          git pull || true
-          git push || true
+          git pull origin gh-pages || true
+          git push -u origin gh-pages || true
