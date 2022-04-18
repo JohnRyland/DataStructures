@@ -166,7 +166,7 @@ With a memory pool impementation, it too could implement such a concept as a fre
 
 ## Table representations of trees
 
-We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like `{#fig9}`.
+We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure \ref{figure 10}.
 
 ![\label{figure 10} A pool tree node](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu)
 
