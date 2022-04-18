@@ -57,5 +57,5 @@ jobs:
           git add .
           git commit -m "Publish documentation" || true
           git config pull.rebase false
-          git pull
+          git pull || true
           git push || true
