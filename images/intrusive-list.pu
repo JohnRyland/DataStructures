@@ -1,4 +1,5 @@
 @startuml
+scale 0.5
 !theme cerulean-outline
 object Item1 {
   value
