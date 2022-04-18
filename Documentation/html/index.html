@@ -193,7 +193,7 @@ Cache friendly structures</h2>
 <p>With a memory pool impementation, it too could implement such a concept as a free list. Because typically memory pools are for fixed sized allocations, the free list only needs to take the first item it finds, it doesn't need to search for a better fitting free chunk of memory. This is wonderful as allocations can be done in constant time if the pool can be guarenteed to be created large enough for the peak number of items it ever needs to allocate. Deallocations can also be in constant time as it simply adds the item back in to the free list.</p>
 <h2><a class="anchor" id="autotoc_md24"></a>
 Table representations of trees</h2>
-<p>We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like <code>{#fig9}</code>.</p>
+<p>We combine this together with our better intrusive tree node, and we have a table of these nodes which represent a m-ary tree but are stored as an array. We should then replace using pointers with indexes for the space saving. So we end up with something like figure figure 10}.</p>
 <p><img src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/JohnRyland/DataStructures/main/images/pool-tree-node.pu" alt="\label{figure 10} A pool tree node" class="inline"/></p>
 <hr  />
 <p>So we can imagine these nodes inside of an array or table. Here is how to think about it:</p>
