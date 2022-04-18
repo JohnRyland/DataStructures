@@ -1,5 +1,5 @@
 @startuml
-scale 0.3
+scale 0.5
 !theme cerulean-outline
 package Structure_Of_Arrays <<Rectangle>> {
 together {
