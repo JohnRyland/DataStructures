@@ -209,7 +209,7 @@ nextFree = 2
 
 -----
 
-Alternatively, because we can swap entries in the array while preserving the integrity of the tree, we could swap the removed entry with the last entry in the array. This is the so called 'swap and pop' method of deletion.
+Alternatively, because we can swap entries in the array while preserving the integrity of the tree, we could swap the removed entry with the last entry in the array. This is the so called 'swap and pop' method of deletion. This does change the index to what was the last item, so references to it need to be fixed up. That might not always be possible or efficient, in which case using the free list should be used.
 
 
 ### Potential use cases
