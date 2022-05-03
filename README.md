@@ -1,5 +1,5 @@
 
-# (Data Structures)[https://johnryland.github.io/DataStructures/]
+# [Data Structures](https://johnryland.github.io/DataStructures/)
 ### Ideas about types of data structures
 
 Copyright (c) 2021, John Ryland.
